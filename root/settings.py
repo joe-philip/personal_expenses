@@ -142,6 +142,8 @@ AUTH_USER_MODEL = 'main.User'
 
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'root.utils.exceptions.exception_handler',
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
+    'ALLOWED_VERSIONS': {'1.0'}
 }
 
 LOGGING = {
