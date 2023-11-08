@@ -139,3 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#specifying-custom-user-model
 
 AUTH_USER_MODEL = 'main.User'
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'root.exceptions.custom_exception_handler',
+}
