@@ -146,12 +146,12 @@ REST_FRAMEWORK = {
 
     # Custom exception handler
     # https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-handling
-    
+
     'EXCEPTION_HANDLER': 'root.utils.exceptions.exception_handler',
 
     # Versioning setup
     # https://www.django-rest-framework.org/api-guide/versioning/#acceptheaderversioning
-    
+
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
     'ALLOWED_VERSIONS': {'1.0'}
 }
@@ -230,3 +230,9 @@ LOGGING = {
         'handlers': {'cron_error', 'error', 'warning', 'critical', 'info'}
     }
 }
+
+
+# Media files
+# https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-MEDIA_ROOT
+MEDIA_URL = 'static/'
+MEDIA_ROOT = join(BASE_DIR, 'media')
