@@ -143,3 +143,76 @@ AUTH_USER_MODEL = 'main.User'
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'root.utils.exceptions.exception_handler',
 }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'detail': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}\n'+f'{"*"*30}\n',
+            'style': '{',
+        },
+        'info_format': {
+            'format': '{asctime} {message}',
+            'style': '{',
+        }
+    },
+    'filters': {
+        'error_only_filter': {
+            '()': 'root.utils.logging.ErrorOnlyFilter'
+        },
+        'cron_error_filter': {
+            '()': 'root.utils.logging.CronErrorFilter'
+        },
+        'warning_only_filter': {
+            '()': 'root.utils.logging.WarningOnlyFilter'
+        },
+        'critical_only_filter': {
+            '()': 'root.utils.logging.CriticalOnlyFilter'
+        },
+        'info_only_filter': {
+            '()': 'root.utils.logging.InfoOnlyFilter'
+        }
+    },
+    'handlers': {
+        'error': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'detail',
+            'filename': join(BASE_DIR, 'logs/errors.log'),
+            'filters': {'error_only_filter', }
+        },
+        'cron_error': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'formatter': 'detail',
+            'filename': join(BASE_DIR, 'logs/cron.log'),
+            'filters': {'cron_error_filter', }
+        },
+        'warning': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'formatter': 'detail',
+            'filename': join(BASE_DIR, 'logs/warning.log'),
+            'filters': {'warning_only_filter', }
+        },
+        'critical': {
+            'level': 'CRITICAL',
+            'class': 'logging.FileHandler',
+            'formatter': 'detail',
+            'filename': join(BASE_DIR, 'logs/critical.log'),
+            'filters': {'critical_only_filter', }
+        },
+        'info': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'formatter': 'info_format',
+            'filename': join(BASE_DIR, 'logs/info.log'),
+            'filters': {'info_only_filter', }
+        }
+    },
+    'root': {
+        'level': 'DEBUG',
+        'handlers': {'cron_error', 'error', 'warning', 'critical', 'info'}
+    }
+}
