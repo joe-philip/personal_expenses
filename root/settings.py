@@ -17,6 +17,8 @@ from environ import Env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# https://django-environ.readthedocs.io/en/latest/
+
 env = Env()
 env.read_env('.env')
 
@@ -43,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +135,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#specifying-custom-user-model
+
+AUTH_USER_MODEL = 'main.User'
