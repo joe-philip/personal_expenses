@@ -1,8 +1,8 @@
 from rest_framework.request import Request
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from root.utils.utils import success
+from root.utils.views.api_view import APIView
 
 # Create your views here.
 
