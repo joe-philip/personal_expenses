@@ -11,7 +11,7 @@ ALLOWED_HOSTS:list
 
 DB_NAME:str
 DB_USER:str
-DB_HOST:strlocalhost
-DB_PORT:str5432
-DB_PASSWORD:strpassword
+DB_HOST:str
+DB_PORT:str
+DB_PASSWORD:str
 ```
