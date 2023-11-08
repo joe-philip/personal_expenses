@@ -154,7 +154,12 @@ REST_FRAMEWORK = {
     # https://www.django-rest-framework.org/api-guide/versioning/#acceptheaderversioning
 
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
-    'ALLOWED_VERSIONS': {'1.0'}
+    'ALLOWED_VERSIONS': {'1.0'},
+
+    # App level permissions
+    # https://www.django-rest-framework.org/api-guide/permissions/
+
+    'DEFAULT_PERMISSION_CLASSES': ('root.utils.permissions.api_key.HasAPIKey',)
 }
 
 # Django Logging
@@ -236,5 +241,5 @@ LOGGING = {
 # Media files
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-MEDIA_ROOT
 
-MEDIA_URL = 'static/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = join(BASE_DIR, 'media')
