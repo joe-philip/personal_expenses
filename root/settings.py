@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
@@ -159,7 +160,11 @@ REST_FRAMEWORK = {
     # App level permissions
     # https://www.django-rest-framework.org/api-guide/permissions/
 
-    'DEFAULT_PERMISSION_CLASSES': ('root.utils.permissions.api_key.HasAPIKey',)
+    'DEFAULT_PERMISSION_CLASSES': ('root.utils.permissions.api_key.HasAPIKey',),
+
+    # https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.TokenAuthentication',)
 }
 
 # Django Logging
