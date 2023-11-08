@@ -139,13 +139,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # https://docs.djangoproject.com/en/4.2/topics/auth/customizing/#specifying-custom-user-model
 
 AUTH_USER_MODEL = 'main.User'
+# Django Rest framework
+# https://www.django-rest-framework.org/
 
 REST_FRAMEWORK = {
+
+    # Custom exception handler
+    # https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-handling
+    
     'EXCEPTION_HANDLER': 'root.utils.exceptions.exception_handler',
+
+    # Versioning setup
+    # https://www.django-rest-framework.org/api-guide/versioning/#acceptheaderversioning
+    
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
     'ALLOWED_VERSIONS': {'1.0'}
 }
 
+# Django Logging
+# https://docs.djangoproject.com/en/4.2/topics/logging/
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
