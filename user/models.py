@@ -11,6 +11,7 @@ class UserProfiles(CommonFields):
     user = models.OneToOneField('main.User', on_delete=models.CASCADE)
     gender = models.IntegerField(choices=GenderChoices.choices)
     bio = models.TextField(blank=True)
+    image = models.ImageField(upload_to='user/profile_images', blank=True)
 
     class Meta:
         db_table = 'user_profiles'
