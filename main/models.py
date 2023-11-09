@@ -104,6 +104,8 @@ class APIKey(models.Model):
     class Meta:
         db_table = 'api-key'
         verbose_name = 'API Key'
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields) -> AbstractBaseUser:
         if not email:
@@ -148,3 +150,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return super().save(*args, **kwargs)
 
     def __str__(self) -> str: return self.first_name
+
+    class Meta:
+        db_table = 'user'
+        verbose_name = 'User'
