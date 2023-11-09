@@ -249,3 +249,26 @@ LOGGING = {
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = join(BASE_DIR, 'media')
+
+# Password validation
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+
+PASSWORD_REGEX_PATTERNS = (
+    {
+        'pattern': r'[A-Z]+',
+        'message': 'Atleast one upper case letter is required'
+    },
+    {
+        'pattern': r'[a-z]+',
+        'message': 'Atleast one lower case letter is required'
+    },
+    {
+        'pattern': r'[0-9]+',
+        'message': 'Atleast one numeric value is required'
+    },
+    {
+        'pattern': r'^\S+$',
+        'message': 'Password should not contain any white spaces'
+    }
+)
+PASSWORD_ALLOWED_SPECIAL_CHARACTERS = '~`!@#$%^&*()_-+={[}]|\:;\'"<,>.?/'
