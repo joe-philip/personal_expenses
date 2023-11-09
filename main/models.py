@@ -5,6 +5,7 @@ from django.contrib.auth.hashers import check_password
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
 from django.db import models
+from pytz import timezone
 
 from root.utils.utils import slug_generate
 
@@ -61,7 +62,7 @@ class APIKeyManager(models.Manager):
     def validate_key(self, key: str):
         identifier = self.get_identifier(key)
         if identifier:
-            today = datetime.now()
+            today = datetime.now(tz=timezone('Asia/Calcutta'))
             keys = APIKey.objects.filter(
                 models.Q(expiry=None) | models.Q(expiry__gt=today),
                 key_identifier=identifier, is_active=True
